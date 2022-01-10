@@ -1,15 +1,18 @@
 <mat-grid-list cols="1" rowHeight="100px" roWeight="300px">
     <mat-grid-tile>
         <input type="text" placeholder="Ex. Buy apples" class="textfield" name="dutyName" #dutyName />
-        <button type="submit" mat-raised-button color="primary">Add element <mat-icon>library_add</mat-icon></button>
+        <button mat-raised-button color="primary" (click)="onSubmit(dutyName.value)">Add element
+            <mat-icon>library_add</mat-icon>
+        </button>
     </mat-grid-tile>
+
     <mat-grid-tile *ngFor="let todo of todos; let i=index">
         <mat-card class="my-card">
             <mat-card-title class="list-element">
                 <input #completecheck type="checkbox" class="checkbox" [checked]="todo.completed"
                     (click)="updateDuty(todo, completecheck.checked)">
                 <span>{{ todo.name }} </span>
-                <span (click)="deleteDuty(todo.id)" class="delete-icon"></span>ss
+                <span (click)="deleteDuty(todo.id)" class="delete-icon"></span>
             </mat-card-title>
         </mat-card>
     </mat-grid-tile>
