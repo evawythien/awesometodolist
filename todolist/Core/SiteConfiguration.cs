@@ -13,7 +13,7 @@ namespace todolist.Core
             services.Configure<DBOptions>(config.GetSection(nameof(DBOptions)))
                     .AddScoped(sp => sp.GetRequiredService<IOptions<DBOptions>>().Value);
 
-            services.AddScoped<MongoClient>(services =>
+            services.AddScoped(services =>
             {
                 DBOptions options = services.GetRequiredService<DBOptions>();
                 return new MongoClient(options.ConnectionString);
